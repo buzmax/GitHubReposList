@@ -9,16 +9,11 @@ import androidx.room.Query
 @Dao
 interface RepositoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(repositories: List<Repository>)
+    suspend fun insertAll(repositories: List<GitHubRepoItem>)
 
     @Query("SELECT * FROM repositories ORDER BY timestamp")
-    fun getRepositories(): PagingSource<Int, Repository>
+    fun getRepositories(): PagingSource<Int, GitHubRepoItem>
 
     @Query("DELETE FROM repositories")
     suspend fun deleteAllRepositories()
-
-
-
-//    @Query("SELECT MAX(page) FROM repositories WHERE id = :repositoryId")
-//    suspend fun getPageForRepository(repositoryId: Long): Int?
 }

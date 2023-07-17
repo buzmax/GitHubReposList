@@ -3,7 +3,7 @@ package com.github.repos.data.repo
 import android.content.Context
 import androidx.preference.PreferenceManager
 import com.github.repos.data.db.RepositoryDao
-import com.github.repos.data.network.GitHubService
+import com.github.repos.data.network.GitHubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,7 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideGitHubRepository(
-        service: GitHubService,
+        service: GitHubApi,
         repositoryDao: RepositoryDao,
         @ApplicationContext context: Context
     ): GitHubRepository {
